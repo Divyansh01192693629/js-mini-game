@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number</title>
+</head>
+
+<body>
+    <h1>Instruction of game</h1>
+    <img src="https://media1.tenor.com/m/Je6JffsMXBkAAAAC/dumil.gif" alt="Game GIF"
+        style="display:block; margin: 0 auto 20px auto; max-width:200px;" />
+    <p>1. Guess the number between 1 and the maximum number you provide.</p>
+    <p>2. Enter your guess in the input field and click "ok" to see if you guessed correctly.</p>
+    <p>3. If your guess is too high or too low, you'll receive feedback to adjust your next guess.</p>
+    <p>4. Keep guessing until you find the correct number!</p>
+    <hr>
+    <div id="timer" style="font-size: 1.5em; color: red;">Game will start in 10 seconds...</div>
+    <div id="game-container" style="display:none;"></div>
+    <script>
+        let seconds = 10;
+        const timerDiv = document.getElementById('timer');
+        const gameContainer = document.getElementById('game-container');
+        const interval = setInterval(() => {
+            seconds--;
+            timerDiv.textContent = `Game will start in ${seconds} seconds...`;
+            if (seconds <= 0) {
+                clearInterval(interval);
+                timerDiv.style.display = 'none';
+                gameContainer.style.display = 'block';
+                // Dynamically load the guessing game script
+                const script = document.createElement('script');
+                script.src = 'guessing game.js';
+                document.body.appendChild(script);
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
